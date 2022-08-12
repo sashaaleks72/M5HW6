@@ -1,0 +1,46 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "title": "iPhone 11 128 GB Black",
+            "quantity": 6,
+            "price": 24999,
+            "imageUrl": "https://content.rozetka.com.ua/goods/images/big_tile/37399220.jpg"
+        },
+        {
+            "id": 2,
+            "title": "iPhone 13 Pro Max 128 GB Graphite",
+            "quantity": 16,
+            "price": 48999,
+            "imageUrl": "https://content2.rozetka.com.ua/goods/images/big_tile/221237435.jpg"
+        },
+        {
+            "id": 3,
+            "title": "iPhone 12 128 GB Purple",
+            "quantity": 10,
+            "price": 32499,
+            "imageUrl": "https://content2.rozetka.com.ua/goods/images/big_tile/173867674.jpg"
+        },
+        {
+            "id": 4,
+            "title": "Headphones JBL JR 310 BT Green",
+            "quantity": 8,
+            "price": 1299,
+            "imageUrl": "https://content.rozetka.com.ua/goods/images/big_tile/153237784.jpg"
+        },
+        {
+            "id": 5,
+            "title": "Headphones JBL TUNE 560 BT Black",
+            "quantity": 4,
+            "price": 1199,
+            "imageUrl": "https://content.rozetka.com.ua/goods/images/big_tile/181462051.jpg"
+        },
+        {
+            "id": 6,
+            "title": "Laptop ASUS TUF Gaming A17",
+            "quantity": 12,
+            "price": 37999,
+            "imageUrl": "https://content1.rozetka.com.ua/goods/images/big_tile/272561687.jpg"
+        }
+    ]
+}
