@@ -1,13 +1,14 @@
 import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { cart } from "../App";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { cart, catalog } from "../App";
 import ProductDto from "../dtos/ProductDto";
-import { getProductById } from "../http/fetches";
+import { delProductById, getProductById } from "../http/fetches";
 
 const ProductComponent = observer((): JSX.Element => {
     const { id } = useParams();
     const [product, setProduct] = useState<ProductDto>();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const init = async () => {
@@ -42,16 +43,33 @@ const ProductComponent = observer((): JSX.Element => {
                     onClick={() => {
                         if (product)
                             cart.addToCart(
-                                product?.id,
-                                product?.title,
-                                product?.imageUrl,
-                                product?.price
+                                product.id,
+                                product.title,
+                                product.imageUrl,
+                                product.price
                             );
                     }}
                 >
                     Add to cart
                 </div>
+                <div
+                    className="btn btn-danger ms-2"
+                    onClick={async () => {
+                        if (product) {
+                            cart.delFromCart(product.id);
+                            await delProductById(id);
+                            catalog.delProductById(product.id);
+
+                            navigate("/products");
+                        }
+                    }}
+                >
+                    X
+                </div>
             </div>
+            <Link to="/products">
+                <div className="text-end">Go to catalog</div>
+            </Link>
         </div>
     );
 });

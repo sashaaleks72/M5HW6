@@ -22,3 +22,11 @@ export const getProductById = async (
     console.log(product);
     return product;
 };
+
+export const delProductById = async (id: string | undefined): Promise<any> => {
+    const requestOptions = {
+        method: "DELETE",
+    };
+    
+    await fetch(`${apiUrl}/products/${id}`, requestOptions);
+};

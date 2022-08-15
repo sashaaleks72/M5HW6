@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import CartComponent from "./Cart/CartComponent";
@@ -11,17 +11,18 @@ import ProductDto from "./dtos/ProductDto";
 import HeaderComponent from "./Header/HeaderComponent";
 import { getProducts } from "./http/fetches";
 import { Cart } from "./store/Cart.store";
+import { Catalog } from "./store/Catalog.store";
 
 export const cart = new Cart();
+export const catalog = new Catalog();
 
 const App = observer(() => {
-    const [products, setProductList] = useState<ProductDto[]>([]);
 
     useEffect(() => {
         const init = async () => {
             const products: ProductDto[] = await getProducts();
 
-            setProductList(products);
+            catalog.productList = products;
         };
 
         init();
@@ -36,7 +37,7 @@ const App = observer(() => {
                         path="/catalog"
                         element={
                             <CatalogComponent>
-                                {products.map((item, index) => (
+                                {catalog.productList.map((item, index) => (
                                     <CatalogItemComponent
                                         key={index}
                                         id={item.id}
